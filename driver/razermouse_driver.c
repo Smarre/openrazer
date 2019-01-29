@@ -199,7 +199,7 @@ static ssize_t razer_attr_read_device_type(struct device *dev, struct device_att
     case USB_DEVICE_ID_RAZER_DIAMONDBACK_CHROMA:
         device_type = "Razer Diamondback Chroma\n";
         break;
-    
+
     case USB_DEVICE_ID_RAZER_MAMBA_ELITE:
         device_type = "Razer Mamba Elite\n";
         break;
@@ -1086,9 +1086,6 @@ static ssize_t razer_attr_write_device_mode(struct device *dev, struct device_at
             break;
         case USB_DEVICE_ID_RAZER_NAGA_HEX_V2:
         case USB_DEVICE_ID_RAZER_DEATHADDER_ELITE:
-        case USB_DEVICE_ID_RAZER_MAMBA_ELITE:
-            report.transaction_id.id = 0x3f;
-            break;
         case USB_DEVICE_ID_RAZER_MAMBA_ELITE:
             report.transaction_id.id = 0x1F;
             report.data_size = 0x06;
@@ -2101,7 +2098,7 @@ static int razer_mouse_probe(struct hid_device *hdev, const struct hid_device_id
             CREATE_DEVICE_FILE(&hdev->dev, &dev_attr_matrix_effect_custom);
             CREATE_DEVICE_FILE(&hdev->dev, &dev_attr_matrix_custom_frame);
             break;
-        
+
         case USB_DEVICE_ID_RAZER_MAMBA_ELITE:
             CREATE_DEVICE_FILE(&hdev->dev, &dev_attr_poll_rate);
             CREATE_DEVICE_FILE(&hdev->dev, &dev_attr_dpi);
@@ -2361,7 +2358,7 @@ static void razer_mouse_disconnect(struct hid_device *hdev)
             device_remove_file(&hdev->dev, &dev_attr_matrix_effect_custom);
             device_remove_file(&hdev->dev, &dev_attr_matrix_custom_frame);
             break;
-        
+
         case USB_DEVICE_ID_RAZER_MAMBA_ELITE:
             device_remove_file(&hdev->dev, &dev_attr_poll_rate);
             device_remove_file(&hdev->dev, &dev_attr_dpi);
